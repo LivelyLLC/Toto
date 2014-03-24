@@ -85,10 +85,7 @@ class ClientSideWorkerSocketHandler(WebSocketHandler):
             cls.log_error = log_error
 
     def log_error(self, e):
-        #
-        # TODO: This exception reference looks like a bug
-        #
-        if isinstance(exception, TotoException):
+        if isinstance(e, TotoException):
             logging.error("TotoException: %s Value: %s" % (e.code, e.value))
         else:
             logging.error(
