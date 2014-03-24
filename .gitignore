@@ -3,3 +3,8 @@
 docs/build
 *.swp
 *.egg-info
+#
+# Idea files
+#
+.idea/
+*.iml
