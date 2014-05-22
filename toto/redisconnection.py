@@ -147,4 +147,8 @@ class RedisSessionCache(TotoSessionCache):
       return None
     else:
       return TotoSession.loads(session_data)
+
+  def remove_session(self, session_id):
+    session_key = _session_key(session_id)
+    self.db.delete(session_key)
     

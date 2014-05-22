@@ -137,7 +137,10 @@ class MySQLdbConnection(DBConnection):
     return session
 
   def remove_session(self, session_id):
-    self.db.execute("delete from session where session_id = %s", session_id)
+    if self._session_cache:
+      self._session_cache.remove_session(session_id)
+    else:
+      self.db.execute("delete from session where session_id = %s", session_id)
 
   def clear_sessions(self, user_id):
     user_id = user_id.lower()
